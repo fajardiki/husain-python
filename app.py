@@ -3,36 +3,17 @@ import pandas as pd
 
 data_container = []
 
-for i, tweet in enumerate(nstwitter.TwitterSearchScraper('#esport lang:id').get_items()) :
-    if i > 3000 :
-        break
-    data_container.append([
-        tweet.rawContent,
-        tweet.renderedContent,
-        tweet.id,
-        tweet.user,
-        tweet.replyCount,
-        tweet.retweetCount,
-        tweet.likeCount,
-        tweet.quoteCount,
-        tweet.conversationId,
-        tweet.lang,
-        tweet.source
-    ])
+for i, tweet in enumerate(nstwitter.TwitterSearchScraper('esport indonesia lang:in').get_items()) :
+    # if i > 5000 :
+    #     break
+    data_container.append([tweet.rawContent])
+    # data_container.append([tweet.rawContent, tweet.user, tweet.hashtags, tweet.lang, tweet.date])
 
-data_pd = pd.DataFrame(data_container, columns=[
-    "rawContent",
-    "renderedContent",
-    "id",
-    "user",
-    "replyCount",
-    "retweetCount",
-    "likeCount",
-    "quoteCount",
-    "conversationId",
-    "lang",
-    "source"
-])
+data_pd = pd.DataFrame(data_container, columns=["Tweet"])
+# data_pd = pd.DataFrame(data_container, columns=["Tweet", "User", "Hastag", "Bahasa", "Tanggal"])
+# data_pd['Tanggal'] = data_pd['Tanggal'].apply(lambda a: pd.to_datetime(a).date())
 
-# print(data_pd.to_excel(r'C:\Users\ASUS\Documents\export_data_tweet.xlsx'))
-data_pd.to_excel(r'C:\Users\ASUS\Documents\export_data_tweet.xlsx', index=False, header=True)
+# print(data_pd.to_excel(r'C:\Users\ASUS\Documents\export_data_tweet.xlsx', ))
+# data_pd.to_excel(r'C:\Users\ASUS\Documents\export_data_tweet.xlsx', index=False, header=True)
+# data_pd.to_excel(r'D:\FREELANCE\husain-python\export_data_tweet_all.xlsx', index=False, header=True)
+data_pd.to_csv(r'D:\FREELANCE\husain-python\export_data_tweet_all.xlsx', index=False, header=True)
