@@ -3,6 +3,10 @@
 - menggunakan library The Natural Language Toolkit (NLTK) https://pypi.org/project/nltk/
 
 # fajar 2022-09-23
+## FILTERING (STOPWORD REMOVAL)
+- kata yang mempunyai frekuensi kemunculan yang tinggi misalnya kata penghubung seperti “dan”, “atau”, “tapi”, “akan” dan lainnya.
+
+# fajar 2022-09-23
 ## CLEANSING
 - proses menghilangkan / menghapus komponen dari  tweet yang tidak memiliki pengaruh apapun  pada analisis sentimen
 
