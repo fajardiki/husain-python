@@ -7,8 +7,11 @@ from nltk.tokenize import word_tokenize
 from nltk.probability import FreqDist
 from nltk.corpus import stopwords
 
+# import nltk
+# nltk.download('stopwords')
+
 data = pd.read_excel('export_data_tweet_all.xlsx')
-df = pd.DataFrame(data).head(10)
+df = pd.DataFrame(data)
 
 # CASE FOLDING
 df['Tweet'] = df['Tweet'].str.lower()
@@ -62,13 +65,11 @@ def word_tokenize_wrapper(text):
 
 df['Tweet Tokens'] = df['Tweet'].apply(word_tokenize_wrapper)
 
-# df.to_excel('data_tokenizing_tes.xlsx')
-
-# FILTERING (STOPWORD REMOVAL)
+# FILTERING (STOPWORD REMOVAL) / CLEANSING
+# ----------------------- get stopword from NLTK stopword -------------------------------
+# get stopword indonesia
 list_stopwords = stopwords.words('indonesian')
 
-
-# ---------------------------- manualy add stopword  ------------------------------------
 # append additional stopword
 list_stopwords.extend(["yg", "dg", "rt", "dgn", "ny", "d", 'klo', 
                        'kalo', 'amp', 'biar', 'bikin', 'bilang', 
@@ -76,28 +77,17 @@ list_stopwords.extend(["yg", "dg", "rt", "dgn", "ny", "d", 'klo',
                        'si', 'tau', 'tdk', 'tuh', 'utk', 'ya', 
                        'jd', 'jgn', 'sdh', 'aja', 'n', 't', 
                        'nyg', 'hehe', 'pen', 'u', 'nan', 'loh', 'rt',
-                       '&amp', 'yah'])
-
-# ----------------------- add stopword from txt file ------------------------------------
-# read txt stopword using pandas
-txt_stopword = pd.read_csv("stopwords.txt", names= ["stopwords"], header = None)
-
-# convert stopword string to list & append additional stopword
-list_stopwords.extend(txt_stopword["stopwords"][0].split(' '))
-
-# ---------------------------------------------------------------------------------------
-
+                       '&amp', 'yah', 'gatau', 'gw', 'lets', 'gooo', 'go', 'codm', 'lo', 'tah'])
 # convert list to dictionary
 list_stopwords = set(list_stopwords)
-
 
 #remove stopword pada list token
 def stopwords_removal(words):
     return [word for word in words if word not in list_stopwords]
 
-TWEET_DATA['tweet_tokens_WSW'] = TWEET_DATA['tweet_tokens'].apply(stopwords_removal) 
+df['Tweet Tokens WSW'] = df['Tweet Tokens'].apply(stopwords_removal)
 
+# CONVERT NEGATION / NORMALIZATION
+df.to_excel('data_tokenizing_tes.xlsx')
 
-print(TWEET_DATA['tweet_tokens_WSW'].head())
-
-print(df)
+# print(df)
