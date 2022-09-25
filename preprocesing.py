@@ -73,4 +73,11 @@ def stopwords_removal(words):
 
 df['Tweet Tokens WSW'] = df['Tweet Tokens'].apply(stopwords_removal)
 
+<<<<<<< HEAD
 df.to_excel('data_tokenizing_tes.xlsx')
+=======
+# CONVERT NEGATION / NORMALIZATION
+df.to_excel('data_tokenizing_tes.xlsx')
+
+# print(df)
+>>>>>>> d10a250def67aa9551713c304209ab9c82e92539
