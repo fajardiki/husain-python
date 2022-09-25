@@ -46,6 +46,8 @@ yang dilakukan adalah memisahkan setiap kata yang dipisahkan oleh spasi
 # fajar 2022-09-23
 ## ini adalah project TA freelance
 - Judul dari TA ini adalah Analisis Sentiment E-sport di indonesian
+## refresi sebagai kiblat pembuatan
+- https://blog.sanbercode.com/docs/kelas-privat-python-01/materi-penerapan-python/analisis-sentimen/ 
 
 # husain-python
 freelance
