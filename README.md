@@ -11,6 +11,14 @@
 - proses merubah huruf kapital menjadi huruf kecil dengan tujuan agar semua huruf seragam
 - menggunakan pandas, df['Tweet'] = df['Tweet'].str.lower()
 
+## KAMUS DATA -------------------------------------------------------------------------
+
+# fajar 2022-09-25
+- kamus data saya ambil dari internet
+- entak ini sesuai dengan data tweet yang saya punya atau tidak
+- karena butuh cepat juga ya
+- saya simpan dengan nama kata_positif dan kata_negatif .txt
+
 ## SCRAPING DATA ----------------------------------------------------------------------
 
 # fajar 2022-09-23
