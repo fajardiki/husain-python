@@ -1,3 +1,10 @@
+## ANALISIS DATA ----------------------------------------------------------------------
+- saya ada masalah untuk mengakses array yang saya simpen di excel / csv yang tersimpan bentuk aray 
+- contoh : ['saya', 'keren']. Masalahnya valae ini tidak bisa saya akses. solusinya pakek literal_eval
+- Referensi https://stackoverflow.com/questions/23119472/in-pandas-python-reading-array-stored-as-string
+- The ast module (Abstract Syntax Tree) allows us to interact with and modify Python code.
+- https://www.aipython.in/python-literal_eval/
+
 ## PREPROCESING DATA ------------------------------------------------------------------
 - dalam procesing data saya mengikuti tutorial https://yunusmuhammad007.medium.com/text-preprocessing-menggunakan-pandas-nltk-dan-sastrawi-untuk-large-dataset-5fb3c0a88571
 - menggunakan library The Natural Language Toolkit (NLTK) https://pypi.org/project/nltk/
@@ -48,6 +55,15 @@ yang dilakukan adalah memisahkan setiap kata yang dipisahkan oleh spasi
 - Judul dari TA ini adalah Analisis Sentiment E-sport di indonesian
 ## refresi sebagai kiblat pembuatan
 - https://blog.sanbercode.com/docs/kelas-privat-python-01/materi-penerapan-python/analisis-sentimen/ 
+
+### SENTIMENT ANALISIS
+## Tipe sentimen analisis
+- Aspect-based sentiment analysis, digunakan untuk mengetahui aspek apa yang mendapat penilaian positif, netral, atau negatif dari pelanggan.
+## Teknik analisis
+- Rule-based sentiment analysis, menggunakan kamus kata-kata yang diberi label sentimen tertentu.
+
+### NAIVE BAYES
+- 
 
 # husain-python
 freelance
