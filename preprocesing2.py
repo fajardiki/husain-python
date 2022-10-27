@@ -32,4 +32,4 @@ def get_stemmed_term(document):
 
 df['Stemmer'] = df['Stopword Removal'].swifter.apply(get_stemmed_term)
 
-df.to_excel('data/data_preprocesing2.xlsx')
+df.to_excel('data/data_preprocesing2.xlsx', header=True, index=False)
