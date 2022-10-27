@@ -1,13 +1,11 @@
-from re import L
 import pandas as pd
-import numpy as np
 
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 import swifter
 from ast import literal_eval
 
 # PERSIAPAN DATA
-data = pd.read_excel('data/data_preprocesing.xlsx')
+data = pd.read_excel('data/data_preprocesing.xlsx', usecols=["Tweet", "Stopword Removal"])
 df = pd.DataFrame(data)
 df['Stopword Removal'] = df['Stopword Removal'].apply(literal_eval)
 
@@ -32,4 +30,14 @@ def get_stemmed_term(document):
 
 df['Stemmer'] = df['Stopword Removal'].swifter.apply(get_stemmed_term)
 
-df.to_excel('data/data_preprocesing2.xlsx', header=True, index=False)
+# MENGEMBALIKAN DATA HASIL TOKENIZING DAN REMOVAL STOPWORD
+# def fit_stopword(text) :
+#     text = np.array(text)
+#     text = ' '.join(text)
+#     return text
+
+# df['Preprocesing'] = df['Stemmer'].apply(lambda x: fit_stopword(x))
+
+# df.drop_duplicates().reset_index(drop=True)
+
+df.to_excel('data/data_preprocesing2.xlsx', index=False, header=True)

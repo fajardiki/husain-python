@@ -27,59 +27,32 @@ print([element for element in df['Label'] if element == "NETRAL"])
 quit()
 
 import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
+from textblob import TextBlob
+from googletrans import Translator
 
-from ast import literal_eval
+data = pd.read_excel('data/data_preprocesing3.xlsx')
+df = pd.DataFrame(data)
 
-# post_list = open("kata_positif.txt", "r")
-# post_kata = post_list.readlines()
-# neg_list = open("kata_negatif.txt", "r")
-# neg_kata = neg_list.readlines()
+translator = Translator()
 
-# df = pd.DataFrame(post_kata)
-# print(df)
-sentiments = []
+def textblob_translate (text) :
+    translation = translator.translate(text, src="id", dest="en")
+    return translation.text
 
-preprocesing_data = pd.read_csv('data_tokenizing_tes.csv')
-data_positif_negatif = pd.read_excel('kata-positif-negatif.xlsx')
+df['Translate'] = df['Preprocesing'].apply(textblob_translate)
 
-pos_kata = pd.DataFrame(data_positif_negatif, columns=["positif"]).dropna()
-neg_kata = pd.DataFrame(data_positif_negatif, columns=["negatif"]).dropna()
+# def fit_stopword(text) : 
+#     return text.replace(',',"")
+# df['Translate'] = df['Translate'].apply(lambda x: fit_stopword(x))
 
-data_tweets = pd.DataFrame(preprocesing_data, columns=['Tweet Tokens WSW'])
-data_tweets['Tweet Tokens WSW'] = data_tweets['Tweet Tokens WSW'].apply(literal_eval)
+def sentiment_polarity (text) : 
+    if TextBlob(text).sentiment.polarity > 0.0 :
+        return "positif"
+    elif TextBlob(text).sentiment.polarity == 0.0 :
+        return "netral"
+    else : 
+        return "negatif"
 
-jumlah_kata = 0
-jml_kata_positif = 0
-jml_kata_negatif = 0
-probabilitas_positif = 0
-probabilitas_negatif = 0
+df['Labeling'] = df['Translate'].apply(sentiment_polarity)
 
-for items in data_tweets['Tweet Tokens WSW'] :
-    # print(items)
-    count_p = 0 #nilai positif
-    count_n = 0 #nilai negatif
-
-    for tweet in items : 
-        jumlah_kata += 1
-        # print(tweet)
-        for kata_pos in pos_kata['positif'] :
-            # print(kata_pos)
-            if (kata_pos == tweet) :
-                count_p += 1 
-        for kata_neg in neg_kata['negatif'] :
-            # print(kata_pos)
-            if (kata_neg == tweet) :
-                count_n += 1
-
-    # print("positif : " + str(count_p))
-    # print("negatif : " + str(count_n))
-    sentiments.append(count_p - count_n)
-    jml_kata_positif += count_p
-    jml_kata_negatif += count_n
-
-# print(sentiments)
-print("jumlah kata : " + str(jumlah_kata))
-print("kata positif : " + str(jml_kata_positif))
-print("kata negatif : " + str(jml_kata_negatif))
+df.to_excel('data/data_analisis.xlsx')
