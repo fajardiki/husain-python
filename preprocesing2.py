@@ -30,14 +30,4 @@ def get_stemmed_term(document):
 
 df['Stemmer'] = df['Stopword Removal'].swifter.apply(get_stemmed_term)
 
-# MENGEMBALIKAN DATA HASIL TOKENIZING DAN REMOVAL STOPWORD
-# def fit_stopword(text) :
-#     text = np.array(text)
-#     text = ' '.join(text)
-#     return text
-
-# df['Preprocesing'] = df['Stemmer'].apply(lambda x: fit_stopword(x))
-
-# df.drop_duplicates().reset_index(drop=True)
-
 df.to_excel('data/data_preprocesing2.xlsx', index=False, header=True)

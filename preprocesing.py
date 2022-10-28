@@ -57,12 +57,5 @@ def stopwords_removal(words):
 
 df['Stopword Removal'] = df['Tokenizing'].apply(stopwords_removal)
 
-# MENGEMBALIKAN DATA HASIL TOKENIZING DAN REMOVAL STOPWORD
-# def fit_stopword(text) :
-#     text = np.array(text)
-#     text = ' '.join(text)
-#     return text
-# df['Return Tokenizing'] = df['Stopword Removal'].apply(lambda x: fit_stopword(x))
-
 # OUTPUT KE EXCEL 
 df.to_excel('data/data_preprocesing.xlsx', columns=["Tweet", "Case Folding", "Tokenizing", "Stopword Removal"], index=False, header=True)
