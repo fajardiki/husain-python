@@ -1,5 +1,4 @@
 import pandas as pd
-from googletrans import Translator
 
 data = pd.read_excel('data/data_analisis2.xlsx')
 df = pd.DataFrame(data)
