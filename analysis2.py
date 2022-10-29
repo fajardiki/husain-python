@@ -1,7 +1,7 @@
 import pandas as pd
 from googletrans import Translator
 
-data = pd.read_excel('data/data_analisis.xlsx')
+data = pd.read_excel('data/data_analisis2.xlsx')
 df = pd.DataFrame(data)
 
 tweet_positif = 0
@@ -16,8 +16,20 @@ for label in df['Labeling'] :
     else :
         tweet_negatif += 1
 
-print(tweet_positif/len(df)*100)
-print(tweet_netral/len(df)*100)
-print(tweet_negatif/len(df)*100)
+df['Tweet_clean'] = df['Preprocesing']
 
-# df.to_excel('data/data_analisis2.xlsx')
+def set_sentiment (text) :
+    if text == "positif" :
+        return 1
+    elif text == "netral" : 
+        return 0 
+    else :
+        return -1
+
+df['Sentiment'] = df['Labeling'].apply(set_sentiment)
+
+# print('positif ', tweet_positif/len(df)*100)
+# print('netral ', tweet_netral/len(df)*100)
+# print('negatif ', tweet_negatif/len(df)*100)
+
+df.to_excel('data/data_analisis3.xlsx', index=False, header=True, columns=["Tweet", "Tweet_clean", "Sentiment"])
