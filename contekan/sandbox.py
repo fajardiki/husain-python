@@ -1,3 +1,32 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+from wordcloud import WordCloud
+from nltk.corpus import stopwords 
+from ast import literal_eval 
+
+data = pd.read_excel('data-example/data_preprocesing3.xlsx')
+df = pd.DataFrame(data)
+comment_words = ""
+
+for val in df.Preprocesing : 
+    comment_words += val 
+
+list_stopwords = stopwords.words('indonesian')
+
+list_stopwords = set(list_stopwords)
+
+wordcloud = WordCloud(width=800, height=800, background_color='white', stopwords=list_stopwords, min_font_size=10).generate(comment_words)
+
+plt.figure(figsize = (8, 8), facecolor = None)
+plt.imshow(wordcloud)
+plt.axis("off")
+plt.tight_layout(pad = 0)
+ 
+plt.show()
+
+
+quit()
+
 import pandas as pd
 from ast import literal_eval
 
