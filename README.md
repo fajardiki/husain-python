@@ -1,3 +1,21 @@
+## CRAWLING DATA
+- data yang di ambil dari twitter
+- menggunakan library snscrape, mengapa menggunakan library ini karena lebih simple tidak perlu register di twitter.developer
+- data yang di ambil 5000 data (permintaan)
+
+## PREPROCESING
+- preprocesing adalah proses pembersiahan data twit
+- library yang digunakan adalah ntlk
+
+
+
+
+
+
+
+
+#######################################################################################
+
 ## ANALISIS DATA ----------------------------------------------------------------------
 - saya ada masalah untuk mengakses array yang saya simpen di excel / csv yang tersimpan bentuk aray 
 - contoh : ['saya', 'keren']. Masalahnya valae ini tidak bisa saya akses. solusinya pakek literal_eval
@@ -61,9 +79,3 @@ yang dilakukan adalah memisahkan setiap kata yang dipisahkan oleh spasi
 - Aspect-based sentiment analysis, digunakan untuk mengetahui aspek apa yang mendapat penilaian positif, netral, atau negatif dari pelanggan.
 ## Teknik analisis
 - Rule-based sentiment analysis, menggunakan kamus kata-kata yang diberi label sentimen tertentu.
-
-### NAIVE BAYES
-- 
-
-# husain-python
-freelance
